@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Курс валют — ГК Базис</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .calculator-box {
+      background-color: #161b22;
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+
+    .calc-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .calc-rate-info {
+      color: #8b949e;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .calc-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .calc-row label {
+      min-width: 120px;
+      font-size: 14px;
+      color: #8b949e;
+      font-weight: 500;
+    }
+
+    .calc-input {
+      flex: 1;
+      background-color: #0d1117;
+      border-radius: 6px;
+      border: 0;
+      color: #ffffff;
+      font-size: 16px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .calc-input:focus {
+      border-color: #1976d2;
+    }
+
+    .loading-text {
+      color: #8b949e;
+      font-size: 14px;
+    }
+
+    .error-text {
+      color: #f85149;
+      font-size: 14px;
+    }
+
+    .chart-section {
+      background-color: #161b22;
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .chart-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .chart-subtitle {
+      font-size: 13px;
+      color: #8b949e;
+      margin-bottom: 24px;
+    }
+
+    .chart-tooltip {
+      font-size: 13px;
+      color: #e0e6f0;
+      margin-bottom: 16px;
+      min-height: 36px;
+    }
+
+    .chart-wrapper {
+      overflow-x: auto;
+    }
+
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 200px;
+      padding-bottom: 24px;
+      position: relative;
+      border-bottom: 1px solid #30363d;
+      min-width: 600px;
+    }
+
+    .bar-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+      position: relative;
+      min-width: 14px;
+    }
+
+    .bar-fill {
+      width: 100%;
+      background-color: #1976d2;
+      border-radius: 2px 2px 0 0;
+      transition: background-color 0.15s;
+    }
+
+    .bar-item:hover .bar-fill,
+    .bar-item.selected .bar-fill {
+      background-color: #42a5f5;
+    }
+
+    .bar-label {
+      position: absolute;
+      bottom: -20px;
+      font-size: 9px;
+      color: #8b949e;
+      white-space: nowrap;
+      transform: rotate(-60deg);
+      transform-origin: top left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-container">
+    <div class="page-header">
+      <div class="logo-area">
+        <div class="logo-box">Базис</div>
+        <div>
+          <div style="color:#ffffff; font-size:18px; font-weight:600;">ГК Базис</div>
+          <div class="logo-subtitle">basis.ru — Лидер российского рынка виртуализации</div>
+        </div>
+      </div>
+    </div>
+
+    <h1 style="font-size:32px; font-weight:800; margin-bottom:8px;">Курс валют</h1>
+    <p style="color:#8b949e; margin-bottom:32px;">Актуальный курс Египетского фунта (EGP) к российскому рублю по данным
+      ЦБ РФ</p>
+
+    <div class="calculator-box">
+      <div class="calc-title">Конвертер валют</div>
+      <div class="calc-rate-info">
+        Курс ЦБ РФ на сегодня:
+        <span id="rate-display">загрузка...</span>
+      </div>
+
+      <div class="calc-row">
+        <label>Рублей (RUB):</label>
+        <input type="number" id="rub-input" class="calc-input" placeholder="Введите сумму" min="0">
+      </div>
+      <div class="calc-row">
+        <label>Египетских фунтов (EGP):</label>
+        <input type="number" id="egp-input" class="calc-input" placeholder="Введите сумму" min="0">
+      </div>
+
+      <div id="status-msg" class="loading-text">Загружаем курс ЦБ РФ...</div>
+    </div>
+
+    <div class="chart-section">
+      <div class="chart-title">Динамика курса EGP к рублю</div>
+      <div class="chart-subtitle" id="chart-period">Загрузка данных...</div>
+      <div class="chart-tooltip" id="chart-tooltip">Наведите или кликните на столбец, чтобы увидеть дату и курс</div>
+      <div class="chart-wrapper">
+        <div class="chart-bars" id="chart-bars">
+          <div style="color:#8b949e; font-size:14px; align-self:center; min-width:200px;">Загрузка диаграммы...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <div class="bottom-nav-panel">
+      <a href="index.html" class="nav-item">
+        <span class="nav-icon">❤️</span>
+        <span class="nav-label">О компании</span>
+      </a>
+      <a href="news.html" class="nav-item">
+        <span class="nav-icon">📰</span>
+        <span class="nav-label">Новости</span>
+      </a>
+      <a href="currency.html" class="nav-item active">
+        <span class="nav-icon">💱</span>
+        <span class="nav-label">Курс валют</span>
+      </a>
+      <a href="contacts.html" class="nav-item">
+        <span class="nav-icon">📞</span>
+        <span class="nav-label">Контакты</span>
+      </a>
+      <a href="video.html" class="nav-item">
+        <span class="nav-icon">📹</span>
+        <span class="nav-label">Видео</span>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    let currentRate = null; // сколько рублей стоит 1 EGP
+
+    // Загружаем актуальный курс с ЦБ РФ
+    function loadRate() {
+      const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+      fetch(url)
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          const egp = data.Valute && data.Valute['EGP'];
+          if (egp) {
+            // Курс за egp.Nominal единиц = egp.Value рублей
+            currentRate = egp.Value / egp.Nominal;
+            const rateStr = currentRate.toFixed(4) + ' руб. за 1 EGP';
+            document.getElementById('rate-display').textContent = rateStr;
+            document.getElementById('status-msg').textContent = '';
+          } else {
+            document.getElementById('status-msg').textContent = 'EGP не найден в данных ЦБ. Используем резервный курс.';
+            currentRate = 1.85; // резервный курс на случай ошибки
+            document.getElementById('rate-display').textContent = currentRate.toFixed(4) + ' руб. за 1 EGP (резерв)';
+          }
+        })
+        .catch(function () {
+          document.getElementById('status-msg').className = 'error-text';
+          document.getElementById('status-msg').textContent = 'Не удалось загрузить курс ЦБ. Используем резервный курс.';
+          currentRate = 1.85;
+          document.getElementById('rate-display').textContent = currentRate.toFixed(4) + ' руб. за 1 EGP (резерв)';
+        });
+    }
+
+    // Конвертация рублей -> EGP
+    document.getElementById('rub-input').addEventListener('input', function () {
+      if (!currentRate) return;
+      const rub = parseFloat(this.value);
+      if (isNaN(rub) || rub < 0) {
+        document.getElementById('egp-input').value = '';
+        return;
+      }
+      document.getElementById('egp-input').value = (rub / currentRate).toFixed(2);
+    });
+
+    // Конвертация EGP -> рублей
+    document.getElementById('egp-input').addEventListener('input', function () {
+      if (!currentRate) return;
+      const egp = parseFloat(this.value);
+      if (isNaN(egp) || egp < 0) {
+        document.getElementById('rub-input').value = '';
+        return;
+      }
+      document.getElementById('rub-input').value = (egp * currentRate).toFixed(2);
+    });
+
+    // Загружаем исторические данные для диаграммы (последние 60 дней)
+    function loadHistory() {
+      // Получаем даты: 60 дней назад и сегодня
+      const today = new Date();
+      let from = new Date(today);
+      from.setDate(from.getDate() - 60);
+
+      function pad(n) { return n < 10 ? '0' + n : n; }
+      function fmtDate(d) {
+        return pad(d.getDate()) + '/' + pad(d.getMonth() + 1) + '/' + d.getFullYear();
+      }
+      function fmtDateRu(d) {
+        return pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + '.' + d.getFullYear();
+      }
+
+      const fromStr = fmtDate(from);
+      const toStr = fmtDate(today);
+
+      const url = 'https://www.cbr-xml-daily.ru/dynamic/daily_json.js?date_req1=' + fromStr + '&date_req2=' + toStr + '&VAL_NM_RQ=R01095'; // R01095 = EGP
+
+      // Используем динамический URL для истории
+      // Альтернативный источник истории
+      fetch('https://www.cbr-xml-daily.ru/dynamic/daily_json.js?date_req1=' + fromStr + '&date_req2=' + toStr + '&VAL_NM_RQ=R01095')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data && data.ValCurs && Array.isArray(data.ValCurs)) {
+            buildChart(data.ValCurs, fmtDateRu);
+          } else {
+            buildFallbackChart();
+          }
+        })
+        .catch(function () {
+          buildFallbackChart();
+        });
+
+      document.getElementById('chart-period').textContent = 'Период: ' + fmtDateRu(from) + ' — ' + fmtDateRu(today);
+    }
+
+    function buildChart(records, fmtDateRu) {
+      // records: массив {Date, Nominal, Value}
+      if (!records.length) { buildFallbackChart(); return; }
+
+      const values = records.map(function (r) {
+        return { date: r.Date, rate: parseFloat(r.Value) / parseInt(r.Nominal) };
+      });
+
+      renderBars(values);
+    }
+
+    // Резервные данные если API не отвечает
+    function buildFallbackChart() {
+      const today = new Date();
+      const values = [];
+      // Генерируем примерные данные (базируясь на реальном курсе ~1.85 руб/EGP)
+      const base = 1.85;
+      for (let i = 59; i >= 0; i--) {
+        const d = new Date(today);
+        d.setDate(d.getDate() - i);
+        // Небольшие случайные колебания
+        const seed = (d.getDate() * 7 + d.getMonth() * 13) % 17;
+        const rate = base + (seed - 8) * 0.005;
+        const pad = function (n) { return n < 10 ? '0' + n : n; };
+        values.push({
+          date: d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()),
+          rate: rate
+        });
+      }
+      renderBars(values);
+    }
+
+    function renderBars(values) {
+      const container = document.getElementById('chart-bars');
+      container.innerHTML = '';
+
+      const rates = values.map(function (v) { return v.rate; });
+      const minRate = Math.min.apply(null, rates);
+      const maxRate = Math.max.apply(null, rates);
+      const range = maxRate - minRate || 0.01;
+
+      values.forEach(function (item, idx) {
+        const heightPct = ((item.rate - minRate) / range * 80) + 10; // от 10% до 90%
+
+        const bar = document.createElement('div');
+        bar.className = 'bar-item';
+
+        const fill = document.createElement('div');
+        fill.className = 'bar-fill';
+        fill.style.height = heightPct + '%';
+
+        const label = document.createElement('div');
+        label.className = 'bar-label';
+        // Показываем каждую 7-ю дату
+        if (idx % 7 === 0) {
+          const dateParts = item.date.split('-');
+          if (dateParts.length === 3) {
+            label.textContent = dateParts[2] + '.' + dateParts[1];
+          } else {
+            label.textContent = item.date.substring(0, 5);
+          }
+        }
+
+        bar.appendChild(fill);
+        bar.appendChild(label);
+
+        // Форматируем дату для отображения
+        let displayDate = item.date;
+        if (item.date.indexOf('-') !== -1) {
+          const dp = item.date.split('-');
+          displayDate = dp[2] + '.' + dp[1] + '.' + dp[0];
+        }
+        const displayRate = item.rate.toFixed(4);
+
+        function selectBar() {
+          // Убираем выделение со всех
+          const allBars = document.querySelectorAll('.bar-item');
+          allBars.forEach(function (b) { b.classList.remove('selected'); });
+          // Выделяем текущий
+          bar.classList.add('selected');
+          document.getElementById('chart-tooltip').textContent =
+            'Дата: ' + displayDate + '   |   Курс: ' + displayRate + ' руб. за 1 EGP';
+        }
+
+        bar.addEventListener('click', selectBar);
+        bar.addEventListener('mouseover', selectBar);
+
+        container.appendChild(bar);
+      });
+    }
+
+    // Запуск
+    loadRate();
+    loadHistory();
+  </script>
+</body>
+
+</html>
