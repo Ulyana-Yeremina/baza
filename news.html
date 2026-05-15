@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Новости — ГК Базис</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .news-card {
+      background-color: #161b22;
+      border-radius: 10px;
+      padding: 22px;
+    }
+
+    .news-date {
+      font-size: 12px;
+      color: #3b9eff;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .news-category {
+      display: inline-block;
+      border-radius: 4px;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .news-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .news-preview {
+      font-size: 14px;
+      color: #8b949e;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .news-full {
+      display: none;
+      font-size: 14px;
+      color: #c9d1d9;
+      margin-bottom: 14px;
+      padding-top: 14px;
+      margin-top: 14px;
+    }
+
+    .news-full.open {
+      display: block;
+    }
+
+    .btn-toggle {
+      background-color: transparent;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .btn-toggle:hover {
+      background-color: #1c2c3e;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-container">
+    <div class="page-header">
+      <div class="logo-area">
+        <img class="logo-box"
+          src="https://upload.wikimedia.org/wikipedia/ru/thumb/5/59/Basis_logo.png/500px-Basis_logo.png?utm_source=ru.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+          alt="Логотип" />
+        <div>
+          <div style="color:#ffffff; font-size:18px; font-weight:600;">ГК Базис</div>
+          <div class="logo-subtitle">basis.ru — Лидер российского рынка виртуализации</div>
+        </div>
+      </div>
+    </div>
+
+    <h1 style="font-size:32px; font-weight:800; margin-bottom:8px;">Новости</h1>
+    <p style="color:#8b949e; margin-bottom:32px;">Актуальные события и достижения компании «Базис»</p>
+
+    <div class="news-grid">
+
+      <div class="news-card">
+        <div class="news-date">24 апреля 2026</div>
+        <div class="news-category">Продукты</div>
+        <div class="news-title">Basis Digital Energy — лидер рейтинга CNews среди платформ автоматизации разработки
+        </div>
+        <div class="news-preview">Аналитический портал CNews опубликовал первый рейтинг российских платформ
+          автоматизации разработки ПО. По результатам исследования, Basis Digital Energy занял первое место.</div>
+        <div class="news-full">
+          В рейтинге оценивались функциональные возможности, масштабируемость, интеграционный потенциал и
+          востребованность на рынке. Basis Digital Energy — DevOps-конвейер, обеспечивающий полный цикл разработки,
+          тестирования и сопровождения информационных систем — продемонстрировал наилучшие показатели среди всех
+          участников. Платформа уже используется в крупнейших государственных и корпоративных проектах России. По словам
+          директора по продукту «Базиса», победа в рейтинге подтверждает правильность стратегии развития
+          DevOps-направления.
+        </div>
+        <button class="btn-toggle" onclick="toggleNews(this)">Показать</button>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">16 апреля 2026</div>
+        <div class="news-category">Рынок</div>
+        <div class="news-title">«Базис» подтвердил статус абсолютного лидера рынка серверной виртуализации</div>
+        <div class="news-preview">Аналитическая компания опубликовала ежегодный квадрант технологий. «Базис» занял
+          позицию абсолютного лидера в сегменте серверной виртуализации.</div>
+        <div class="news-full">
+          Согласно результатам исследования, «Базис» сохраняет лидерство по показателям полноты видения и возможностей
+          реализации. Доля компании на рынке серверной виртуализации превысила 36%, что почти вдвое превышает показатели
+          ближайшего конкурента. Эксперты отметили уникальность экосистемного подхода «Базиса», который позволяет
+          клиентам реализовать все задачи управления ИТ-инфраструктурой в рамках одной платформы отечественной
+          разработки.
+        </div>
+        <button class="btn-toggle" onclick="toggleNews(this)">Показать</button>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">26 января 2026</div>
+        <div class="news-category">Инвесторам</div>
+        <div class="news-title">Частным инвесторам «Базиса» стало доступно освобождение от уплаты НДФЛ</div>
+        <div class="news-preview">«Базис» объявил о том, что акции компании включены в перечень ценных бумаг, по которым
+          доступен инвестиционный налоговый вычет. Теперь частные инвесторы могут освободиться от уплаты НДФЛ.</div>
+        <div class="news-full">
+          С 26 января 2026 года инвесторы, которые держат акции BAZA более трёх лет, получают право на применение льготы
+          долгосрочного владения. Это значит, что при продаже акций по истечении этого срока доход освобождается от
+          налогообложения в размере до 3 млн рублей за каждый год владения. Такая мера должна увеличить
+          привлекательность акций для розничных инвесторов и повысить ликвидность бумаги на рынке.
+        </div>
+        <button class="btn-toggle" onclick="toggleNews(this)">Показать</button>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">28 мая 2025</div>
+        <div class="news-category">Продукты</div>
+        <div class="news-title">Выпущен Basis SDN — первое в России коробочное решение для программно-определяемых сетей
+        </div>
+        <div class="news-preview">«Базис» и разработчик российского веб-сервера Angie выпустили первый в России
+          коробочный продукт для организации программно-определяемых сетей (SDN).</div>
+        <div class="news-full">
+          Basis SDN — продукт, созданный на основе совместного соглашения между «Базисом» и компанией-разработчиком
+          веб-сервера Angie. Решение позволяет автоматизировать управление сетевой инфраструктурой, снизить операционные
+          расходы и повысить отказоустойчивость. SDN-контроллер легко интегрируется с уже существующими продуктами
+          экосистемы «Базис», что делает переход на него максимально простым для действующих клиентов компании.
+        </div>
+        <button class="btn-toggle" onclick="toggleNews(this)">Показать</button>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">2 апреля 2026</div>
+        <div class="news-category">Награды</div>
+        <div class="news-title">«Базис» стал победителем национальной премии «Золотой сайт»</div>
+        <div class="news-preview">Сайт компании занял первое место в номинации «Лучший сайт, созданный на конструкторах
+          и платформах» национального конкурса «Золотой сайт».</div>
+        <div class="news-full">
+          Жюри высоко оценило технологический подход, объединивший скорость no-code-разработки с широкими возможностями
+          кастомной адаптации. Интерфейс выполнен в современном адаптивном дизайне с акцентом на технологическую
+          экспертизу вендора. Проект реализован командами «Базиса» и ИТ-экосистемы «Лукоморье». «Золотой сайт» —
+          ключевой и старейший конкурс интернет-проектов в Рунете, проводится с 1997 года.
+        </div>
+        <button class="btn-toggle" onclick="toggleNews(this)">Показать</button>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">15 декабря 2024</div>
+        <div class="news-category">IPO</div>
+        <div class="news-title">Акции «Базиса» размещены на Московской бирже</div>
+        <div class="news-preview">Группа компаний «Базис» успешно провела IPO на Московской бирже. Акции под тикером
+          BAZA начали торговаться в секции инновационных компаний.</div>
+        <div class="news-full">
+          Размещение прошло в рамках ценового диапазона. Компания оценила себя в 17–18 млрд рублей на момент IPO. В ходе
+          подготовки к размещению «Базис» был включён в сектор рынка инноваций и инвестиций Московской биржи. Акции BAZA
+          сразу привлекли интерес институциональных и частных инвесторов. Контролирующий акционер «ИКС Холдинг» продал
+          часть акций в рамках IPO, что обеспечило необходимый уровень ликвидности.
+        </div>
+        <button class="btn-toggle" onclick="toggleNews(this)">Показать</button>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">10 ноября 2024</div>
+        <div class="news-category">Клиенты</div>
+        <div class="news-title">Газпромбанк и ВТБ перешли на решения «Базиса»</div>
+        <div class="news-preview">Два крупнейших российских банка — Газпромбанк и ВТБ — завершили переход на продукты
+          «Базиса» для организации виртуальных рабочих мест и управления динамической инфраструктурой.</div>
+        <div class="news-full">
+          Внедрение включало в себя развёртывание платформ Basis Workplace и Basis Dynamix на тысячах рабочих мест.
+          Переход позволил банкам отказаться от иностранных решений — в первую очередь от продуктов VMware и Citrix — и
+          полностью перейти на отечественное программное обеспечение. Обе организации отметили высокий уровень
+          технической поддержки и соответствие продуктов «Базиса» требованиям регуляторов и службы информационной
+          безопасности.
+        </div>
+        <button class="btn-toggle" onclick="toggleNews(this)">Показать</button>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">5 сентября 2024</div>
+        <div class="news-category">Партнёрство</div>
+        <div class="news-title">«Базис» и «Киберпротект» создадут комплексное решение защиты ИТ-инфраструктуры</div>
+        <div class="news-preview">Компании подписали соглашение о стратегическом партнёрстве. Совместный продукт
+          объединит возможности виртуализации «Базиса» и инструменты резервного копирования и защиты данных
+          «Киберпротект».</div>
+        <div class="news-full">
+          Партнёрство направлено на создание единого интегрированного решения, которое закрывает все ключевые задачи
+          управления и защиты корпоративной ИТ-инфраструктуры. Совместный продукт будет доступен клиентам обеих
+          компаний. По оценке аналитиков, рынок комплексных решений для управления инфраструктурой в России растёт
+          ежегодно не менее чем на 25%, что делает партнёрство особенно актуальным.
+        </div>
+        <button class="btn-toggle" onclick="toggleNews(this)">Показать</button>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">20 июня 2024</div>
+        <div class="news-category">Образование</div>
+        <div class="news-title">«Базис» открыл центр подготовки ИТ-специалистов в МГТУ им. Н.Э. Баумана</div>
+        <div class="news-preview">На базе Московского государственного технического университета открылся учебный центр
+          «Базиса». Студенты получат практические навыки работы с платформами виртуализации и облачными технологиями.
+        </div>
+        <div class="news-full">
+          Центр оснащён современным лабораторным оборудованием и программным обеспечением «Базиса». Студенты МГТУ смогут
+          проходить обучение по специальным программам, разработанным инженерами компании. Лучшие выпускники получат
+          возможность трудоустройства в «Базисе» и компаниях-партнёрах. Сотрудничество с ведущим техническим вузом
+          страны — часть стратегии компании по развитию отечественной школы инфраструктурного программирования.
+        </div>
+        <button class="btn-toggle" onclick="toggleNews(this)">Показать</button>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">12 марта 2024</div>
+        <div class="news-category">ГосТех</div>
+        <div class="news-title">Все государственные ИС в ЦОДах ГосТех переведены на виртуализацию «Базиса»</div>
+        <div class="news-preview">ФКУ «ГосТех» и «Базис» объявили о завершении перевода всех государственных
+          информационных систем в дата-центрах Сколково и Санкт-Петербурга на единую среду виртуализации.</div>
+        <div class="news-full">
+          В числе переведённых систем — сервисы Росреестра, «Социального казначейства» и Национальной системы
+          пространственных данных (НСПД). Работа над проектом заняла более двух лет. В основе созданных виртуальных сред
+          лежит флагманский продукт Basis Dynamix, обеспечивающий высокую производительность и надёжность. Директор ФКУ
+          «ГосТех» Василий Слышкин отметил, что сертифицированное ПО «Базиса» помогает обеспечить доступность
+          государственных сервисов для миллионов граждан.
+        </div>
+        <button class="btn-toggle" onclick="toggleNews(this)">Показать</button>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <div class="bottom-nav-panel">
+      <a href="index.html" class="nav-item">
+        <span class="nav-icon">❤️</span>
+        <span class="nav-label">О компании</span>
+      </a>
+      <a href="news.html" class="nav-item active">
+        <span class="nav-icon">📰</span>
+        <span class="nav-label">Новости</span>
+      </a>
+      <a href="currency.html" class="nav-item">
+        <span class="nav-icon">💱</span>
+        <span class="nav-label">Курс валют</span>
+      </a>
+      <a href="contacts.html" class="nav-item">
+        <span class="nav-icon">📞</span>
+        <span class="nav-label">Контакты</span>
+      </a>
+      <a href="video.html" class="nav-item">
+        <span class="nav-icon">📹</span>
+        <span class="nav-label">Видео</span>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    function toggleNews(btn) {
+      const card = btn.parentElement;
+      const full = card.querySelector('.news-full');
+      if (full.classList.contains('open')) {
+        full.classList.remove('open');
+        btn.textContent = 'Показать';
+      } else {
+        full.classList.add('open');
+        btn.textContent = 'Скрыть';
+      }
+    }
+  </script>
+</body>
+
+</html>
