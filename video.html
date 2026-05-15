@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Видео — ГК Базис</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .video-main {
+      background-color: #161b22;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .video-frame-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      /* 16:9 */
+      background-color: #000;
+    }
+
+    .video-frame-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-info {
+      padding: 24px;
+    }
+
+    .video-info h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .video-info p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-container">
+    <div class="page-header">
+      <div class="logo-area">
+        <img class="logo-box"
+          src="https://upload.wikimedia.org/wikipedia/ru/thumb/5/59/Basis_logo.png/500px-Basis_logo.png?utm_source=ru.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+          alt="Логотип" />
+        <div>
+          <div style="color:#ffffff; font-size:18px; font-weight:600;">ГК Базис</div>
+          <div class="logo-subtitle">basis.ru — Лидер российского рынка виртуализации</div>
+        </div>
+      </div>
+    </div>
+
+    <h1 style="font-size:32px; font-weight:800; margin-bottom:8px;">Видео</h1>
+    <p style="color:#8b949e; margin-bottom:32px;">Видеоматериалы о компании и продуктах ГК «Базис»</p>
+
+    <div class="video-main">
+      <div class="video-frame-wrapper">
+        <iframe src="https://vk.com/video_ext.php?oid=-19008613&id=456239589&hash=a15cdf026e831a75&hd=4" width="1920"
+          height="1080" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
+          frameborder="0" allowfullscreen></iframe>
+        </iframe>
+      </div>
+      <div class="video-info">
+        <h2>Церемония начала торгов акциями ПАО «ГК «БАЗИС»</h2>
+        <p>Узнайте о флагманских продуктах «Базиса»: платформе виртуализации Basis Dynamix, решении для виртуальных
+          рабочих мест Basis Workplace, DevOps-конвейере Basis Digital Energy и других компонентах экосистемы для
+          комплексного управления ИТ-инфраструктурой предприятия.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <div class="bottom-nav-panel">
+      <a href="index.html" class="nav-item">
+        <span class="nav-icon">❤️</span>
+        <span class="nav-label">О компании</span>
+      </a>
+      <a href="news.html" class="nav-item">
+        <span class="nav-icon">📰</span>
+        <span class="nav-label">Новости</span>
+      </a>
+      <a href="currency.html" class="nav-item">
+        <span class="nav-icon">💱</span>
+        <span class="nav-label">Курс валют</span>
+      </a>
+      <a href="contacts.html" class="nav-item">
+        <span class="nav-icon">📞</span>
+        <span class="nav-label">Контакты</span>
+      </a>
+      <a href="video.html" class="nav-item active">
+        <span class="nav-icon">📹</span>
+        <span class="nav-label">Видео</span>
+      </a>
+    </div>
+  </nav>
+</body>
+
+</html>
