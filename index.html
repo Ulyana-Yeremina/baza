@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О компании — ГК Базис</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .hero {
+      background: #0f1f35;
+      border-radius: 12px;
+      padding: 60px 40px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      color: #3b9eff;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #8b949e;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 800;
+      color: #3b9eff;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .info-card {
+      background-color: #161b22;
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .info-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .info-card p {
+      font-size: 16px;
+      color: #e0e6f0;
+    }
+
+    .history-item {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .history-year {
+      min-width: 60px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #3b9eff;
+      padding-top: 2px;
+    }
+
+    .history-content {
+      flex: 1;
+      padding-left: 20px;
+      padding-bottom: 20px;
+    }
+
+    .history-content h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .history-content p {
+      color: #8b949e;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 90px;
+      right: 30px;
+      background-color: #1976d2;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: .2s;
+    }
+
+    .back-to-top:hover {
+      transform: scale(110%);
+      background-color: #1565c0;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="top"></div>
+
+  <div class="page-container">
+    <div class="page-header">
+      <div class="logo-area">
+        <img class="logo-box"
+          src="https://upload.wikimedia.org/wikipedia/ru/thumb/5/59/Basis_logo.png/500px-Basis_logo.png?utm_source=ru.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+          alt="Логотип" />
+        <div>
+          <div style="color:#ffffff; font-size:18px; font-weight:600;">ГК Базис</div>
+          <div class="logo-subtitle">basis.ru — Лидер российского рынка виртуализации</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1><span>Базис</span> — фундамент цифровой инфраструктуры</h1>
+      <p>Ведущий российский разработчик программного обеспечения для управления <strong>динамической
+          ИТ-инфраструктурой</strong>, виртуальными рабочими местами и облачными решениями.</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">36%</div>
+          <div class="stat-label">Доля рынка виртуализации</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">700+</div>
+          <div class="stat-label">Компаний-клиентов</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">120</div>
+          <div class="stat-label">Государственных ИС</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2021</div>
+          <div class="stat-label">Год основания бренда</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Общие сведения о компании</h2>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Полное наименование</h3>
+        <p>СП «Облачная платформа» (ГК «Базис»)</p>
+      </div>
+      <div class="info-card">
+        <h3>Год создания</h3>
+        <p>2021 год (бренд «Базис»)</p>
+      </div>
+      <div class="info-card">
+        <h3>Тикер на бирже</h3>
+        <p>BAZA (Московская биржа)</p>
+      </div>
+      <div class="info-card">
+        <h3>Головной офис</h3>
+        <p>Москва, ул. Тверская, д. 16</p>
+      </div>
+      <div class="info-card">
+        <h3>Контролирующий акционер</h3>
+        <p>РТК-ЦОД (структура «Ростелекома»), доля 50,3%</p>
+      </div>
+      <div class="info-card">
+        <h3>Выручка (2024)</h3>
+        <p>4,5 млрд рублей (+50% к 2023 г.)</p>
+      </div>
+    </div>
+
+    <p style="color:#c9d1d9; margin-bottom:40px; line-height:1.8;">
+      <strong>ГК «Базис»</strong> — крупнейший в России разработчик программного обеспечения для управления
+      <em>динамической ИТ-инфраструктурой</em>. Компания предлагает единственную на отечественном рынке <u>полноценную
+        экосистему</u> корпоративных инструментов, охватывающую серверную виртуализацию, виртуальные рабочие столы
+      (VDI), программно-определяемые сети, хранение данных и DevOps-инструменты. Решения «Базиса» применяются в
+      крупнейших государственных информационных системах России, в том числе на платформе ГосТех, а также в таких
+      компаниях, как <a href="https://basis.ru">Газпромбанк</a>, ВТБ, Ростатом, Ростех и многих других.
+    </p>
+
+
+    <h2 class="section-title">История компании</h2>
+
+    <div style="margin-bottom:40px;">
+      <div class="history-item">
+        <div class="history-year">2010–2020</div>
+        <div class="history-content">
+          <h4>Истоки</h4>
+          <p>Три независимые компании — «Тионикс» (дочка РТК-ЦОД, структуры «Ростелекома»), Digital Energy и «Скала
+            Софтвер» — разрабатывают решения в области виртуализации и облачных технологий, накапливая более чем
+            десятилетний практический опыт.</p>
+        </div>
+      </div>
+
+      <div class="history-item">
+        <div class="history-year">2021</div>
+        <div class="history-content">
+          <h4>Объединение активов</h4>
+          <p>«Тионикс» и Digital Energy объединяются под единым управлением. Создаётся база для нового технологического
+            бренда. Компания начинает активно работать в сегменте импортозамещения.</p>
+        </div>
+      </div>
+
+      <div class="history-item">
+        <div class="history-year">2022</div>
+        <div class="history-content">
+          <h4>Рождение бренда «Базис»</h4>
+          <p>К объединению присоединяется «Скала Софтвер». <strong>Возникает единый бренд «Базис»</strong>. Совместно с
+            «Лабораторией Касперского» создаётся интегрированное облачное решение для безопасных облачных инфраструктур.
+            Компания начинает занимать лидирующие позиции в рейтингах.</p>
+        </div>
+      </div>
+
+      <div class="history-item">
+        <div class="history-year">2023</div>
+        <div class="history-content">
+          <h4>Абсолютное лидерство</h4>
+          <p>По данным «ТМТ Консалтинг», «Базис» признан крупнейшим ИТ-разработчиком на рынке виртуализации с долей
+            <em>36%</em>. Продукты компании используются в 120 государственных информационных системах России.
+          </p>
+        </div>
+      </div>
+
+      <div class="history-item">
+        <div class="history-year">2024</div>
+        <div class="history-content">
+          <h4>Крупные сделки и IPO</h4>
+          <p>Газпромбанк и ВТБ переходят на решения «Базиса». Все государственные ИС на платформе ГосТех переведены на
+            виртуализацию «Базиса». Компания выходит на рынок Бразилии. Акции BAZA размещаются на Московской бирже в
+            ходе IPO. Приобретается разработчик «Рустэк».</p>
+        </div>
+      </div>
+
+      <div class="history-item">
+        <div class="history-year">2025</div>
+        <div class="history-content">
+          <h4>Новые продукты и рост</h4>
+          <p>Выпущен продукт <strong>Basis SDN</strong> — первое в России коробочное решение для организации
+            программно-определяемых сетей. Выручка растёт в 1,5 раза до 4,5 млрд рублей. Компания становится победителем
+            национальной премии «Золотой сайт».</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#top" class="back-to-top" title="Наверх">&#8593;</a>
+
+  <nav class="bottom-nav">
+    <div class="bottom-nav-panel">
+      <a href="index.html" class="nav-item active">
+        <span class="nav-icon">❤️</span>
+        <span class="nav-label">О компании</span>
+      </a>
+      <a href="news.html" class="nav-item">
+        <span class="nav-icon">📰</span>
+        <span class="nav-label">Новости</span>
+      </a>
+      <a href="currency.html" class="nav-item">
+        <span class="nav-icon">💱</span>
+        <span class="nav-label">Курс валют</span>
+      </a>
+      <a href="contacts.html" class="nav-item">
+        <span class="nav-icon">📞</span>
+        <span class="nav-label">Контакты</span>
+      </a>
+      <a href="video.html" class="nav-item">
+        <span class="nav-icon">📹</span>
+        <span class="nav-label">Видео</span>
+      </a>
+    </div>
+  </nav>
+</body>
+
+</html>
